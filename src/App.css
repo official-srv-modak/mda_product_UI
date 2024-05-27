@@ -1,0 +1,81 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+/* src/App.css */
+.App {
+  display: flex;
+}
+
+.main-container {
+  flex-grow: 1;
+  transition: margin-left 0.3s;
+  margin-left: 200px; /* Default width of the sidebar */
+}
+
+.main-container.expanded {
+  margin-left: 60px; /* Width of the collapsed sidebar */
+}
+
+.header {
+  position: fixed;
+  width: calc(100% - 200px); /* Adjust for the sidebar width */
+  margin-left: 200px; /* Same as the width of the sidebar */
+  transition: width 0.3s, margin-left 0.3s;
+}
+
+.main-container.expanded .header {
+  width: calc(100% - 60px); /* Adjust for the collapsed sidebar width */
+  margin-left: 60px; /* Same as the width of the collapsed sidebar */
+}
+
+.main-content {
+  margin-top: 56px; /* Height of the fixed header */
+  padding: 20px;
+}
+
+.content {
+  padding-top: 20px; /* Additional padding to separate the content from the header */
+}
+
