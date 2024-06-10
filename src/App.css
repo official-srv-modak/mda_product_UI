@@ -84,7 +84,7 @@
 
 /* App.css (or any CSS file) */
 .body-container-wrapper {
-  max-width: 50%;
+  max-width: 100%;
   margin: 0 auto; /* Center align the content */
 }
 

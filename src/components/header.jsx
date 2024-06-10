@@ -8,19 +8,33 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import './header.css';
 import modakDevLogo from './modak-dev-logo.png'; // Import the logo image
 
-
 function Header() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8080/api/get-all-products');
+                const username = 'admin';
+                const password = 'admin';
+                const url = 'http://localhost:8080/product-catalog-module/product/get-all-products';
+        
+                const headers = new Headers();
+                headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
+        
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: headers
+                });
+        
                 if (!response.ok) {
-                    throw new Error('Failed to fetch products');
+                    throw new Error('Failed to fetch product data');
                 }
                 const data = await response.json();
-                setProducts(data);
+                if (data.status === 'OK') {
+                    setProducts(data.products);
+                } else {
+                    throw new Error(data.message);
+                }
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
@@ -51,7 +65,7 @@ function Header() {
                         <NavDropdown title="Products" id="basic-nav-dropdown" className="ml-auto">
                             {products.map((product) => (
                                 <NavDropdown.Item key={product.id} href="#">
-                                    {product.name}
+                                    {product.description}
                                 </NavDropdown.Item>
                             ))}
                         </NavDropdown>

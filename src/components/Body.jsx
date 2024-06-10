@@ -9,7 +9,7 @@ function Body() {
             try {
                 const username = 'admin';
                 const password = 'admin';
-                const url = 'http://127.0.0.1:8089/api/get-product?id=2';
+                const url = 'http://localhost:8080/product-catalog-module/product/get-product/1';
         
                 const headers = new Headers();
                 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
@@ -24,7 +24,7 @@ function Body() {
                 }
         
                 const data = await response.json();
-                setProductData(data);
+                setProductData(data.product);
             } catch (error) {
                 console.error('Error fetching product data:', error);
             }
@@ -36,15 +36,15 @@ function Body() {
         return <div>Loading...</div>;
     }
 
-    const encodedColumnsArray = JSON.parse(productData.encodedColumns);
+    const encodedColumnsArray = productData.encodedColumns;
 
     return (
         <div className="body-container-wrapper">
             <div className="body-container">
-                <h2>{productData.name}</h2>
-                <p>Accuracy: {productData.accuracy}</p>
-                <p>Correlation Matrix: <pre>{productData.correlationMatrix}</pre></p>
-                <p>Encoded Columns:</p>
+                <h2>{productData.description}</h2>
+                <p><h3>Accuracy:</h3> {productData.accuracy}%</p>
+                <p><h3>Correlation Matrix:</h3> <pre>{productData.correlationMatrix}</pre></p>
+                <p><h3>Encoded Columns:</h3></p>
                 <ul>
                     {encodedColumnsArray.map((column, index) => (
                         <li key={index}>{column}</li>
