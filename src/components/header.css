@@ -25,3 +25,13 @@
 .navbar .nav-item .dropdown-item:hover {
   background-color: #737373;
 }
+
+#basic-nav-dropdown{
+  text-align: center;
+}
+
+/* header.css */
+.center-text {
+  text-align: center;
+}
+
