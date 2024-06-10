@@ -13,12 +13,20 @@ function Header() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        const sampleProducts = [
-            { Id: 'product1', Title: 'Term Deposit', Url: '/product1' },
-            { Id: 'product2', Title: 'Credit card approval', Url: '/product2' },
-            { Id: 'product3', Title: 'Other products', Url: '/product3' },
-        ];
-        setProducts(sampleProducts);
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8080/api/get-all-products');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     return (
@@ -42,8 +50,8 @@ function Header() {
                     <div className="md-nav-dropdown">
                         <NavDropdown title="Products" id="basic-nav-dropdown" className="ml-auto">
                             {products.map((product) => (
-                                <NavDropdown.Item key={product.Id} href={product.Url}>
-                                    {product.Title}
+                                <NavDropdown.Item key={product.id} href="#">
+                                    {product.name}
                                 </NavDropdown.Item>
                             ))}
                         </NavDropdown>

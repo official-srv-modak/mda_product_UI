@@ -6,7 +6,6 @@
   top: 0;
   left: 0;
   background-color: black;
-  margin: 10px 10px 0px 0px;
   border-radius: 10px 0px 10px 0px;
   padding-top: 56px; /* Adjusted for the header height */
   z-index: 1000; /* Ensure it is above the header */

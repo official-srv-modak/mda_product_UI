@@ -50,6 +50,7 @@
 
 .main-container {
   flex-grow: 1;
+  max-width: 100%;
   transition: margin-left 0.3s;
   margin-left: 200px; /* Default width of the sidebar */
 }
@@ -78,4 +79,21 @@
 .content {
   padding-top: 20px; /* Additional padding to separate the content from the header */
 }
+
+
+
+/* App.css (or any CSS file) */
+.body-container-wrapper {
+  max-width: 50%;
+  margin: 0 auto; /* Center align the content */
+}
+
+.body-container {
+  /* You can optionally style the body container further if needed */
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 

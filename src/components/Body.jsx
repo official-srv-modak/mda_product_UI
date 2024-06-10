@@ -1,72 +1,59 @@
-import React, { useState } from 'react';
+// Body.jsx
+import React, { useState, useEffect } from 'react';
 
 function Body() {
-  const [formData, setFormData] = useState({
-    productName: '',
-    col1: '',
-    col2: '',
-    col3: '',
-  });
+    const [productData, setProductData] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const username = 'admin';
+                const password = 'admin';
+                const url = 'http://127.0.0.1:8089/api/get-product?id=2';
+        
+                const headers = new Headers();
+                headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
+        
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: headers
+                });
+        
+                if (!response.ok) {
+                    throw new Error('Failed to fetch product data');
+                }
+        
+                const data = await response.json();
+                setProductData(data);
+            } catch (error) {
+                console.error('Error fetching product data:', error);
+            }
+        };
+        fetchData();
+    }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission (e.g., send data to the server)
-    console.log('Form data:', formData);
-  };
+    if (!productData) {
+        return <div>Loading...</div>;
+    }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="productName">Product Name:</label>
-        <input
-          type="text"
-          id="productName"
-          name="productName"
-          value={formData.productName}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="col1">Col1:</label>
-        <input
-          type="text"
-          id="col1"
-          name="col1"
-          value={formData.col1}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="col2">Col2:</label>
-        <input
-          type="text"
-          id="col2"
-          name="col2"
-          value={formData.col2}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="col3">Col3:</label>
-        <input
-          type="text"
-          id="col3"
-          name="col3"
-          value={formData.col3}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  );
+    const encodedColumnsArray = JSON.parse(productData.encodedColumns);
+
+    return (
+        <div className="body-container-wrapper">
+            <div className="body-container">
+                <h2>{productData.name}</h2>
+                <p>Accuracy: {productData.accuracy}</p>
+                <p>Correlation Matrix: <pre>{productData.correlationMatrix}</pre></p>
+                <p>Encoded Columns:</p>
+                <ul>
+                    {encodedColumnsArray.map((column, index) => (
+                        <li key={index}>{column}</li>
+                    ))}
+                </ul>
+
+            </div>
+        </div>
+    );
 }
 
 export default Body;
