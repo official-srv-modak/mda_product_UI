@@ -50,7 +50,7 @@
 
 .main-container {
   flex-grow: 1;
-  max-width: 100%;
+  max-width: 50%;
   transition: margin-left 0.3s;
   margin-left: 200px; /* Default width of the sidebar */
 }
@@ -61,13 +61,13 @@
 
 .header {
   position: fixed;
-  width: calc(100% - 200px); /* Adjust for the sidebar width */
+  /* width: calc(100% - 200px); Adjust for the sidebar width */
   margin-left: 200px; /* Same as the width of the sidebar */
   transition: width 0.3s, margin-left 0.3s;
 }
 
 .main-container.expanded .header {
-  width: calc(100% - 60px); /* Adjust for the collapsed sidebar width */
+  /* width: calc(100% - 60px); Adjust for the collapsed sidebar width */
   margin-left: 60px; /* Same as the width of the collapsed sidebar */
 }
 
