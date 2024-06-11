@@ -1,0 +1,16 @@
+.image-modal-dialog {
+    max-width: 90vw; /* Set maximum width of the modal */
+}
+
+.image-modal-body {
+    /* max-height: calc(100vh - 120px); Set maximum height of the modal body */
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-modal-image {
+    max-width: 50%; /* Ensure the image does not exceed the modal width */
+    max-height: 50%; /* Ensure the image does not exceed the modal height */
+}

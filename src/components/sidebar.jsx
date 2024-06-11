@@ -23,16 +23,14 @@ const Sidebar = ({ collapsed, toggleSidebar, productDetails }) => {
           </li>
           <li>
             <a href="#correlation-matrix" className="nav-link text-white">
-              Correlation Matrix
+              Correlation Matrix Image
             </a>
           </li>
-          {/* {productDetails.encodedColumns.map((column, index) => (
-            <li key={index}>
-              <a href={`#encoded-column-${index}`} className="nav-link text-white">
-                {column}
-              </a>
-            </li>
-          ))} */}
+          <li>
+            <a href="#encoded-heading" className="nav-link text-white">
+              Encoded Columns
+            </a>
+          </li>
         </ul>
       ) : (
         <div>Loading...</div>

@@ -50,8 +50,7 @@
 
 .main-container {
   flex-grow: 1;
-  min-width: 50%;
-  max-width: 50%;
+  max-width: 70%;
   transition: margin-left 0.3s;
   margin-left: 200px; /* Default width of the sidebar */
 }

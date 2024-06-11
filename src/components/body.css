@@ -3,3 +3,7 @@
     margin: 0 auto; /* Center align the content */
     padding: 0 20px; /* Optional padding for better readability */
 }
+.correlation-image{
+    height: 480px;
+    width: 640px;
+}
