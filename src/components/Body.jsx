@@ -6,6 +6,7 @@ function Body({ selectedProductId }) {
     const [productData, setProductData] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [selectedColumn, setSelectedColumn] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -60,6 +61,7 @@ function Body({ selectedProductId }) {
     }
 
     const encodedColumnsArray = productData.encodedColumns;
+    const encodedColumnsString = encodedColumnsArray.join(', ');
 
     return (
         <div className="body-container-wrapper">
@@ -82,12 +84,13 @@ function Body({ selectedProductId }) {
                     )}
                 </p>
                 <p id="correlation-matrix-details"><h3>Correlation Matrix Details:</h3> <pre>{productData.correlationMatrix}</pre></p>
-                <p id="encoded-heading"><h3>Encoded Columns:</h3></p>
-                <ul>
-                    {encodedColumnsArray.map((column, index) => (
-                        <li key={index} id={`encoded-column-${index}`}>{column}</li>
-                    ))}
-                </ul>
+                <h3>Encoded Columns:</h3>
+                <div className="encoded-columns-container">
+
+                    <div className="encoded-columns-list">
+                        <p>{encodedColumnsString}</p>
+                    </div>
+                </div>
                 {showModal && <ImageModal imageUrl={productData.imageUrl} onClose={handleCloseModal} />}
             </div>
         </div>
