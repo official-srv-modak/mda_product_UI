@@ -13,7 +13,7 @@ function Body({ selectedProductId }) {
             try {
                 const username = 'admin';
                 const password = 'admin';
-                const url = `http://localhost:8080/product-catalog-module/product/get-product/${selectedProductId}`;
+                const url = `http://localhost:8081/product-catalog-module/product/get-product/${selectedProductId}`;
 
                 const headers = new Headers();
                 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));

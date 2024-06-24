@@ -15,7 +15,7 @@ function Header({ onProductSelect }) {
             try {
                 const username = 'admin';
                 const password = 'admin';
-                const url = 'http://localhost:8080/product-catalog-module/product/get-all-products';
+                const url = 'http://localhost:8081/product-catalog-module/product/get-all-products';
 
                 const headers = new Headers();
                 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));

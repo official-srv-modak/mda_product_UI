@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/header.jsx';
 import Sidebar from './components/sidebar.jsx';
-import Body from './components/body.jsx';
+import Body from './components/Body.jsx';
 import './App.css';
 import './index.css';
 
@@ -23,7 +23,7 @@ function App() {
       try {
         const username = 'admin';
         const password = 'admin';
-        const url = `http://localhost:8080/product-catalog-module/product/get-product/${id}`;
+        const url = `http://localhost:8081/product-catalog-module/product/get-product/${id}`;
 
         const headers = new Headers();
         headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
